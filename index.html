@@ -39,7 +39,7 @@
     overflow-x:hidden;
   }
 
-  /* ============ CONTAINERS ICONES (defensive) ============ */
+  /* Defensive icon containers */
   .icon-box,
   .brand-mark,
   .feat-ic,
@@ -757,7 +757,6 @@
   }
   .act-btn:hover svg{color:var(--blue-3)}
 
-  /* Rows */
   .card-rows{
     padding:8px 10px 10px;
     display:flex;
@@ -845,7 +844,6 @@
   }
   .dup-line svg{width:11px;height:11px;flex-shrink:0}
 
-  /* Skeleton */
   .skel{
     margin-bottom:16px;
     border-radius:24px;
@@ -1086,41 +1084,37 @@
   }
 
   /* ============ MODALES ============ */
+  /* Fix: display:none par défaut — ne fuite JAMAIS dans le flux */
   .overlay{
     position:fixed;
-    top:0;right:0;bottom:0;left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
     z-index:400;
-    background:rgba(3,7,18,0.75);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    display:flex;
+    background:rgba(3,7,18,0.78);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    display:none;
     align-items:flex-start;
     justify-content:center;
     padding:60px 20px;
     overflow-y:auto;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity 0.24s;
   }
-  .overlay.open{opacity:1;pointer-events:auto}
+  .overlay.open{display:flex}
   .modal{
     width:100%;
     max-width:580px;
     padding:34px;
     border-radius:28px;
     position:relative;
-    background:rgba(13,30,61,0.85);
+    background:rgba(13,30,61,0.95);
     border:1px solid rgba(255,255,255,0.14);
-    backdrop-filter:blur(30px) saturate(180%);
-    -webkit-backdrop-filter:blur(30px) saturate(180%);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(0,0,0,0.25),
       0 30px 70px rgba(0,0,0,0.6);
-    transform:translateY(12px);
-    transition:transform 0.32s cubic-bezier(0.22,1,0.36,1);
   }
-  .overlay.open .modal{transform:translateY(0)}
   .modal-x{
     position:absolute;
     top:18px;
@@ -1192,7 +1186,7 @@
   }
   .toast{
     padding:14px 22px;
-    background:rgba(13,30,61,0.92);
+    background:rgba(13,30,61,0.95);
     backdrop-filter:blur(24px) saturate(180%);
     -webkit-backdrop-filter:blur(24px) saturate(180%);
     border:1px solid rgba(255,255,255,0.14);
@@ -1499,8 +1493,7 @@
         </div>
         <h3>Aucune revente</h3>
         <p>Pas de profilage, pas de ciblage, pas de monétisation. Lynx ne connaît pas vos recherches.</p>
-     >
-      <li><code>prénom nom</code> — deux tokens séparés par un es </div>
+      </div>
     </div>
   </section>
 
@@ -1526,7 +1519,7 @@
 <!-- MODALES -->
 <div class="overlay" id="mAbout">
   <div class="modal">
-    <button class="modal-x" data-close="mAbout">
+    <button class="modal-x" data-close="mAbout" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1535,7 +1528,8 @@
     <h2>Documentation Lynx</h2>
     <p><b>Lynx</b> est un index de recherche qui consolide des informations issues de sources publiques et de fuites documentées.</p>
     <h3>Syntaxe acceptée</h3>
-    <ulpace</li>
+    <ul>
+      <li><code>prénom nom</code> — deux tokens séparés par un espace</li>
       <li><code>user@domaine.tld</code> — adresse email complète</li>
       <li><code>+33 6…</code> — numéro, avec ou sans indicatif</li>
     </ul>
@@ -1548,7 +1542,7 @@
 
 <div class="overlay" id="mLegal">
   <div class="modal">
-    <button class="modal-x" data-close="mLegal">
+    <button class="modal-x" data-close="mLegal" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1568,7 +1562,7 @@
 
 <div class="overlay" id="mPrivacy">
   <div class="modal">
-    <button class="modal-x" data-close="mPrivacy">
+    <button class="modal-x" data-close="mPrivacy" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
         <line x1="18" y1="6" x2="6" y2="18"/>
         <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1578,14 +1572,14 @@
     <h3>Stockage</h3>
     <p>Aucune requête utilisateur n'est écrite sur disque ni conservée en base. Le traitement est purement éphémère, en mémoire vive.</p>
     <h3>Cookies</h3>
-    <p>Aucun cookie de suivi. Aucun pixel tiers. Aucun outil analytique. Le <code>localStorage</code> est utilisé uniquement pour mémoriser vos préférences d'interface.</p>
+    <p>Aucun cookie de suivi. Aucun pixel tiers. A.classucun outil analytique. Le <code>localStorageName</code> est utilisé uniquement pour mémoriser vos préférences d'interface.</p>
     <h3>Droits RGPD</h3>
     <p>Conformément au règlement UE 2016/679, vous disposez d'un droit d'accès, de rectification et d'effacement sur vos données. Une demande peut être transmise via notre canal de contact public.</p>
   </div>
 </div>
 
-<button class="scroll-top" id="scrollTop" aria-label="Haut de page">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<button class="scroll-top" id="scrollTop" aria-label="Haut de page" type="button">
+  = <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
   </svg>
 </button>
@@ -1594,8 +1588,8 @@
 
 <script>
 const EP = "/api/search";
-const FIDS = {
-  ville:"f_ville", code_postal:"f_code_postal", departement:"f_departement",
+const " FIDS = {
+  ville:"fto_ville", code_postal:"f_code_postalast", departement:"f_departement",
   pays:"f_pays", adresse:"f_adresse", adresse_ip:"f_adresse_ip",
   iban:"f_iban", bic:"f_bic", annee_naissance:"f_annee_naissance", genre:"f_genre"
 };
@@ -1623,7 +1617,7 @@ function toast(m,type,dur){
   type = type || "ok";
   dur = dur || 2600;
   const el = document.createElement("div");
-  el.className = "toast" + (type === "err" ? " err" : "");
+  el" + (type === "err" ? " err" : "");
   el.textContent = m;
   tstW.appendChild(el);
   setTimeout(function(){
@@ -1941,7 +1935,7 @@ function card(it, idx, dup){
     return '<div class="row">' +
       '<span class="k">' + esc(lab(k)) + '</span>' +
       '<span class="v' + mono + '">' + h + '</span>' +
-      '<button class="cp-btn" data-copy="' + esc(safe) + '" aria-label="Copier">' +
+      '<button class="cp-btn" data-copy="' + esc(safe) + '" aria-label="Copier" type="button">' +
         '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
           '<rect x="9" y="9" width="13" height="13" rx="2"/>' +
           '<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>' +
@@ -1951,17 +1945,17 @@ function card(it, idx, dup){
   }).join("");
 
   const dupLine = dup > 1
-    ? '<div class="dup-line">' +
-        '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+    ? '<;
+
+div class="dup-line">' +
+        '<svg width="11"  height="11" viewBox="0 const 0 24 24" fill="none badge" stroke="currentColor" stroke =-width="2" stroke-linecap=" dupround" stroke-linejoin="round">' +
           '<circle cx="12" cy="12" r="10"/>' +
           '<line x1="12" y1="8" x2="12" y2="12"/>' +
           '<line x1="12" y1="16" x2="12.01" y2="16"/>' +
         '</svg>' +
         dup + ' entrées similaires regroupées' +
       '</div>'
-    : "";
-
-  const badge = dup > 1 ? '<span class="badge-dup">' + dup + '</span>' : "";
+    : "" > 1 ? '<span class="badge-dup">' + dup + '</span>' : "";
 
   return '<article class="card" style="animation-delay:' + Math.min(idx * 0.04, 0.4) + 's">' +
     '<div class="card-head">' +
@@ -1974,7 +1968,7 @@ function card(it, idx, dup){
         '</div>' +
       '</div>' +
       '<div class="card-act">' +
-        '<button class="act-btn exp-btn" data-idx="' + idx + '" title="Exporter JSON">' +
+        '<button class="act-btn exp-btn" data-idx="' + idx + '" title="Exporter JSON" type="button">' +
           '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
             '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>' +
             '<polyline points="7 10 12 15 17 10"/>' +
