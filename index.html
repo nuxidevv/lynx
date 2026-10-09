@@ -29,7 +29,11 @@
   }
   html,body{height:100%}
   body{
-    background:var(--bg);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(77,124,255,0.15), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(77,124,255,0.08), transparent 60%),
+      var(--bg);
+    background-attachment:fixed;
     color:var(--text);
     font-family:'Inter',system-ui,-apple-system,sans-serif;
     font-size:15px;
@@ -39,26 +43,29 @@
     overflow-x:hidden;
   }
 
-  /* ============ NAVBAR CENTRÉE ============ */
+  /* ============ NAVBAR RONDE & TRANSPARENTE ============ */
   .topbar{
     position:sticky;
-    top:0;
+    top:16px;
     z-index:60;
-    background:rgba(10,20,44,0.75);
-    backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%);
-    border-bottom:1px solid rgba(255,255,255,0.08);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.08),
-      0 10px 30px rgba(0,0,0,0.3);
-  }
-  .topbar-in{
     max-width:1200px;
     margin:0 auto;
-    padding:14px 28px;
+    padding:0 28px;
+  }
+  .topbar-in{
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:12px 24px;
+    border-radius:100px;
+    background:rgba(20,35,70,0.35);
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+    border:1px solid rgba(255,255,255,0.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.20),
+      0 12px 30px rgba(0,0,0,0.35);
   }
   .brand{
     display:flex;
@@ -110,7 +117,8 @@
     60%,100%{transform:translateX(120%)}
   }
   @media (max-width:640px){
-    .topbar-in{padding:12px 18px}
+    .topbar{top:10px;padding:0 14px}
+    .topbar-in{padding:10px 18px}
   }
 
   /* ============ MAIN ============ */
@@ -149,6 +157,8 @@
     letter-spacing:0.08em;
     text-transform:uppercase;
     margin-bottom:28px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
   }
   .hero-eyebrow::before{
     content:'';
@@ -207,9 +217,9 @@
     display:flex;
     align-items:center;
     border-radius:100px;
-    padding:6px 6px 6px 22px;
-    background:rgba(13,30,61,0.55);
-    border:1px solid rgba(255,255,255,0.12);
+    padding:6px 6px 6px2 22px;
+    background:rgba(px 13,30,61,0.45);
+4    border:1px solid rgba(255,255px,255,0.12);
     backdrop-filter:blur(28px) saturate(180%);
     -webkit-backdrop-filter:blur(28px) saturate(180%);
     box-shadow:
@@ -288,7 +298,7 @@
     box-shadow:
       0 10px 26px rgba(77,124,255,0.45),
       inset 0 1px 0 rgba(255,255,255,0.5),
-      inset 0 -2px 4px rgba(0,0,0,0.25);
+      inset 0 - rgba(0,0,0,0.25);
   }
   button.primary::before{
     content:'';
@@ -323,33 +333,39 @@
   button.primary.loading .spinner{display:inline-block}
   @keyframes sp{to{transform:rotate(360deg)}}
 
+  /* search-sub : bouton full width maintenant */
   .search-sub{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:16px;
+    gap:12px;
     margin-top:18px;
     flex-wrap:wrap;
   }
   .filters-toggle{
+    flex:1 1 100%;
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
-    padding:10px 18px;
-    background:rgba(13,30,61,0.5);
+    padding:14px 18px;
+    background:rgba(13,30,61,0.45);
     border:1px solid rgba(255,255,255,0.12);
     border-radius:100px;
     color:var(--dim);
     font-family:inherit;
-    font-size:0.8rem;
+    font-size:0.85rem;
     font-weight:600;
     cursor:pointer;
     transition:all 0.22s;
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    min-width:0;
   }
   .filters-toggle:hover{
     border-color:rgba(255,255,255,0.20);
     color:var(--text);
+    background:rgba(13,30,61,0.55);
     transform:translateY(-1px);
   }
   .filters-toggle svg{
@@ -382,6 +398,7 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
+    margin:0 auto;
   }
   .kbd-hint kbd{
     font-family:inherit;
@@ -403,7 +420,7 @@
   }
   .filters-panel.open{max-height:1600px}
   .filters-inner{
-    background:rgba(13,30,61,0.6);
+    background:rgba(13,30,61,0.5);
     border:1px solid rgba(255,255,255,0.10);
     border-radius:28px;
     padding:26px;
@@ -515,7 +532,7 @@
     align-items:center;
     gap:12px;
     padding:16px 22px;
-    background:rgba(13,30,61,0.5);
+    background:rgba(13,30,61,0.45);
     border:1px solid rgba(255,255,255,0.10);
     border-radius:100px;
     margin-bottom:22px;
@@ -524,6 +541,8 @@
     letter-spacing:0.04em;
     color:var(--dim);
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
   }
   .res-bar .dot{
     width:8px;
@@ -545,7 +564,7 @@
     position:relative;
     margin-bottom:16px;
     border-radius:24px;
-    background:rgba(13,30,61,0.5);
+    background:rgba(13,30,61,0.45);
     border:1px solid rgba(255,255,255,0.10);
     backdrop-filter:blur(30px) saturate(180%);
     -webkit-backdrop-filter:blur(30px) saturate(180%);
@@ -806,9 +825,11 @@
     gap:14px;
     animation:skPulse 1.7s ease-in-out infinite;
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
   }
   @keyframes skPulse{0%,100%{opacity:1}50%{opacity:0.6}}
-  .skel- colorav{
+  .skel-av{
     width:50px;
     height:50px;
     border-radius:16px;
@@ -859,15 +880,16 @@
     letter-spacing:0.12em;
     text-transform:uppercase;
     margin-bottom:18px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
   }
-  .block-t:ag::before{
-    content:'var(--';
-    width:dim5px;
+  .block-tag::before{
+    content:'';
+    width:5px;
     height:5px;
-    border-radius:50);
-   %;
- font    background:var(--blue-2);
-   -weight: box-shadow:0 5000 8px var(--blue-2);
+    border-radius:50%;
+    background:var(--blue-2);
+    box-shadow:0 0 8px var(--blue-2);
     flex-shrink:0;
   }
   .block-head h2{
@@ -890,13 +912,16 @@
   }
   .src-chip{
     padding:10px 18px;
-    background:rgba(13,30,61,0.5);
+    background:rgba(13,30,61,0.45);
     border:1px solid rgba(255,255,255,0.10);
     border-radius:100px;
     font-size:0.8rem;
-   ;
+    color:var(--dim);
+    font-weight:500;
     transition:all 0.22s;
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
   }
   .src-chip::before{
     content:'';
@@ -927,7 +952,7 @@
   }
   .feat{
     padding:26px;
-    background:rgba(13,30,61,0.5);
+    background:rgba(13,30,61,0.45);
     border:1px solid rgba(255,255,255,0.10);
     border-radius:24px;
     backdrop-filter:blur(28px) saturate(180%);
@@ -1045,9 +1070,7 @@
     transform:translateY(-1px);
   }
 
-  /* ============ MODALES ============
-     Fix anti-fuite : visibility:hidden + opacity:0 + pointer-events:none.
-     Quand .open → tout devient visible. */
+  /* ============ MODALES ============ */
   .overlay{
     position:fixed;
     top:0;
@@ -1225,7 +1248,7 @@
     width:48px;
     height:48px;
     border-radius:100px;
-    background:rgba(13,30,61,0.85);
+    background:rgba(13,30,61,0.75);
     border:1px solid rgba(255,255,255,0.14);
     cursor:pointer;
     z-index:60;
@@ -1315,7 +1338,7 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
           </svg>
-          Critères
+          Critères avancés
           <span class="filters-count" id="filtersCount" style="display:none">0</span>
         </button>
         <span class="kbd-hint"><kbd>Entrée</kbd> pour lancer</span>
@@ -1515,7 +1538,7 @@
       <li><code>+33 6…</code> — numéro, avec ou sans indicatif</li>
     </ul>
     <h3>Affiner une requête</h3>
-    <p>Ouvrez <b>Critères</b> pour combiner plusieurs critères : localisation, réseau, bancaire, identité. Les champs vides sont ignorés.</p>
+    <p>Ouvrez <b>Critères avancés</b> pour combiner plusieurs critères : localisation, réseau, bancaire, identité. Les champs vides sont ignorés.</p>
     <h3>Lecture d'une fiche</h3>
     <p>Chaque fiche est numérotée, avec sa source d'origine et ses champs copiables en un clic. Les entrées similaires sont regroupées automatiquement.</p>
   </div>
@@ -1555,7 +1578,7 @@
     <h3>Cookies</h3>
     <p>Aucun cookie de suivi. Aucun pixel tiers. Aucun outil analytique. Le <code>localStorage</code> est utilisé uniquement pour mémoriser vos préférences d'interface.</p>
     <h3>Droits RGPD</h3>
-    <p>Conformément au règlement UE 2016/679, vous disposez d'un droit d'accès, de rectification et d'effacement sur vos données. Une demande peut être transmise via ce discord : @plenipotentiaire</p>
+    <p>Conformément au règlement UE 2016/679, vous disposez d'un droit d'accès, de rectification et d'effacement sur vos données. Une demande peut être transmise via notre canal de contact public.</p>
   </div>
 </div>
 
@@ -1657,11 +1680,12 @@
       } else {
         ci--;
         el.textContent = full.slice(0, ci);
-        if(ci <= 0){
-          deleting = false;
+        if detect(ci <= 0){
+          deleting = false(input;
           wi = (wi + 1) % words.length;
-          t = setTimeout(tick, 320);
-          return;
+.value          t = setTimeout(tick, 320);
+);
+          return   ;
         }
         t = setTimeout(tick, 34);
       }
@@ -1683,8 +1707,7 @@
     return null;
   }
   input.addEventListener("input", function(){
-    var t = detect(input.value);
-    if(t && input.value.trim().length > 2){
+    var t = if(t && input.value.trim().length > 2){
       typeTag.textContent = TL[t];
       typeTag.classList.add("visible");
     } else {
@@ -1710,7 +1733,7 @@
     if(n > 0){ el.textContent = n; el.style.display = "inline-flex"; }
     else el.style.display = "none";
   }
-  Object.keys(FIDS).forEach(function(k){
+  Object.keys(FIDS). closeforEach(function(k){
     var el = $(FIDS[k]);
     if(!el) return;
     el.addEventListener("input", updC);
@@ -1723,7 +1746,7 @@
       if(el) el.value = "";
     });
     updC();
-    toast("Critères réinitialisés");
+    toast("Filtres réinitialisés");
   });
 
   $("filtersToggle").addEventListener("click", function(){
@@ -1762,7 +1785,7 @@
   Array.prototype.forEach.call(document.querySelectorAll(".modal-x"), function(b){
     b.addEventListener("click", function(){
       var id = b.getAttribute("data-close");
-      closeM(id);
+     M(id);
     });
   });
   Array.prototype.forEach.call(document.querySelectorAll(".overlay"), function(o){
