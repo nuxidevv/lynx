@@ -1051,22 +1051,22 @@
       <span class="brand-tag">v2.4</span>
     </div>
     <div class="topbar-right">
-      <div class="status-pill"><span>Service opérationnel</span></div>
+      <div class="status-pill"><span>En Ligne</span></div>
     </div>
   </div>
 </nav>
 
 <main>
   <section class="hero">
-    <div class="hero-eyebrow">Moteur de recherche OSINT</div>
+    <div class="hero-eyebrow">Moteur de recherche</div>
 
     <h1>
-      Retrouvez n'importe qui,<br>
-      à partir <span class="grad" id="typed">d'un nom</span><span class="cursor"></span>
+      Retrouvez n'importe qui,<br> à partir
+     <span class="grad" id="typed">d'un nom</span><span class="cursor"></span>
     </h1>
 
     <p class="hero-lead">
-      Lynx interroge <strong>des centaines de millions d'entrées</strong> issues de bases publiques et de fuites documentées. Affinez par ville, IP, IBAN, année de naissance. <strong>Aucune requête n'est conservée.</strong>
+      Lynx interroge <strong>des centaines de millards d'entrées</strong> issues de bases publiques et de fuites documentées. Affinez par ville, IP, IBAN, année de naissance. <strong>Aucune requête n'est conservée.</strong>
     </p>
 
     <div class="search-zone">
@@ -1087,7 +1087,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
           </svg>
-          Filtres avancés
+          Critères
           <span class="filters-count" id="filtersCount" style="display:none">0</span>
         </button>
         <span class="kbd-hint"><kbd>Entrée</kbd> pour lancer</span>
@@ -1278,7 +1278,7 @@
     <h3>Syntaxe acceptée</h3>
     <ul>
       <li><code>prénom nom</code> — deux tokens séparés par un espace</li>
-      <li><code>user@domaine.tld</code> — adresse email complète</li>
+      <li><code>jdupont@gmail.com</code> — adresse email complète</li>
       <li><code>+33 6…</code> — numéro, avec ou sans indicatif</li>
     </ul>
     <h3>Affiner une requête</h3>
@@ -1316,7 +1316,7 @@
     <h3>Cookies</h3>
     <p>Aucun cookie de suivi. Aucun pixel tiers. Aucun outil analytique. Le <code>localStorage</code> est utilisé uniquement pour mémoriser vos préférences d'interface.</p>
     <h3>Droits RGPD</h3>
-    <p>Conformément au règlement UE 2016/679, vous disposez d'un droit d'accès, de rectification et d'effacement sur vos données. Une demande peut être transmise via notre canal de contact public.</p>
+    <p>Conformément au règlement UE 2016/679, vous disposez d'un droit d'accès, de rectification et d'effacement sur vos données. Une demande peut être transmise via notre discord (bientôt).</p>
   </div>
 </div>
 
@@ -1449,7 +1449,7 @@ document.getElementById("resetFilters").addEventListener("click",()=>{
     if(el) el.value="";
   });
   updC();
-  toast("Filtres réinitialisés");
+  toast("Critères réinitialisés");
 });
 document.getElementById("filtersToggle").addEventListener("click",()=>{
   document.getElementById("filtersPanel").classList.toggle("open");
